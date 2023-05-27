@@ -1,20 +1,55 @@
 <nav class="navbar navbar-dark bg-primary">
-  <a class="navbar-brand m-1" href="/">
+  <a class="navbar-brand m-2" href="/">
     Angular Simple CRUD
   </a>
 </nav>
 
 <section class="container">
   <section class="row">
-    <section class="col-md-8">
+    <section class="col-md-8 mt-4">
       <ul class="list-group">
-
+        <li
+        *ngFor="let person of personArray"
+         class="list-group-item list-group-item-action"
+         (click)="openForEdit(person)"
+         [class.active]="person == selectedPerson"
+         >
+        <span class="badge bg-info">{{ person.id }}</span> {{ person.name }} {{ person.surname }} - {{ person.age }} años - C.C. {{ person.ced }}
+        <br>
+        <span id="resultado"></span>
+        </li>
       </ul>
       <article class="card mt-4">
         <article class="card-body">
           <article class="card-title">
-            Inserta una nueva persona
+            Agrega una nueva persona
           </article>
+          <br>
+          <article class="form-group">
+            <input type="text" [(ngModel)]="selectedPerson.name" placeholder="Inserta un nombre" class="form-control">
+          </article>
+          <br>
+          <article class="form-group">
+            <input type="text" [(ngModel)]="selectedPerson.surname" placeholder="Inserta un apellido" class="form-control">
+          </article>
+          <br>
+          <article class="form-group">
+            <input type="text" [(ngModel)]="selectedPerson.age" placeholder="Inserta una edad" class="form-control">
+          </article>
+          <br>
+          <article class="form-group">
+            <input type="text" [(ngModel)]="selectedPerson.ced" placeholder="Inserta una cédula" class="form-control">
+          </article>
+          <br>
+          <button (click)="addOrEdit()" class="btn btn-success">
+            Agregar
+          </button>
+          <button
+          *ngIf="selectedPerson.id !== 0"
+          class="btn btn-danger"
+          (click)="delete()">
+            Eliminar
+          </button>
         </article>
       </article>
     </section>
