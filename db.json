@@ -1,19 +1,10 @@
 {
-  "posts": [
+  "person": [
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "name": "J",
+      "surname": "A",
+      "age": 18,
+      "ced": 123456
     }
-  ],
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }
